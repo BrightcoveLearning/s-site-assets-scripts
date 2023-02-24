@@ -20,10 +20,13 @@ layout: null
   site_domain = '{{ site.site_domain }}';
   console.log('site domain', site_domain);
   filter = "domain='" + site_domain +  "'";
-lang_filter = "lang='" + lang + "'";
-  all_bc_docs_filter = "domain  ~ '" + lang + ".'";
-  console.log('filter', filter);
-console.log('lang_filter', lang_filter);
+  lang_filter = "lang='" + lang + "'";
+    if (lang === 'ja' || lang === 'ko' || lang === 'es' || lang === 'fr' || lang === 'de' || lang === 'zh-tw') {
+    all_bc_docs_filter = "domain  ~ '" + lang + ".'";
+  } else {
+    all_bc_docs_filter = '.';
+  }  console.log('filter', filter);
+  console.log('lang_filter', lang_filter);
     console.log('all_bc_docs_filter: ', all_bc_docs_filter);
   if (site_domain === 'support.brightcove.com') {
     tab_filters = {defaultTab:"All Brightcove Documentation",tabs:[{title:"All Brightcove Documentation",filter:filter}]};
